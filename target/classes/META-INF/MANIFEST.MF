@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: Adminl
+Build-Jdk: 10.0.2
+Implementation-Title: ProxiBanque_V3_BMBH
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: org.formation
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ProxiBanque_V3_BMBH
+Created-By: Maven Integration for Eclipse
+
