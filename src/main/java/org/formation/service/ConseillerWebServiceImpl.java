@@ -29,19 +29,20 @@ public class ConseillerWebServiceImpl implements ConseillerWebService {
 
 	@Override
 	public Response updateConseiller(Conseiller conseiller) {
-		return null;
+		crudConseillerDao.save(conseiller);
+		return Response.ok().build();
 	}
 
 	@Override
 	public Response addConseiller(Conseiller conseiller) {
-		// TODO Auto-generated method stub
-		return null;
+		crudConseillerDao.save(conseiller);
+		return Response.ok().build();
 	}
 
 	@Override
 	public Response deleteConseiller(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		crudConseillerDao.deleteById(Integer.valueOf(id));
+		return Response.ok().build();
 	}
 
 }
