@@ -1,41 +1,46 @@
 package org.formation.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.ws.rs.core.Response;
 
+import org.formation.dao.CrudCompteDao;
 import org.formation.model.CompteBancaire;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CompteWebServiceImpl implements CompteWebService {
 
+	@Autowired
+	private CrudCompteDao crudCompteDao;
+	
 	@Override
 	public CompteBancaire getCompteBancaire(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<CompteBancaire> optional = crudCompteDao.findById(Integer.valueOf(id));
+		return optional.get();
 	}
 
 	@Override
 	public List<CompteBancaire> getCompteBancaires() {
-		// TODO Auto-generated method stub
-		return null;
+		return crudCompteDao.findAll();
 	}
 
 	@Override
 	public Response updateCompteBancaire(CompteBancaire compteBancaire) {
-		// TODO Auto-generated method stub
-		return null;
+		crudCompteDao.save(compteBancaire);
+		return Response.ok().build();
 	}
 
 	@Override
 	public Response addCompteBancaire(CompteBancaire compteBancaire) {
-		// TODO Auto-generated method stub
-		return null;
+		crudCompteDao.save(compteBancaire);
+		return Response.ok().build();
 	}
 
 	@Override
 	public Response deleteCompteBancaire(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		crudCompteDao.deleteById(Integer.valueOf(id));;
+		return Response.ok().build();
 	}
 
 }

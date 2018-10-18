@@ -33,5 +33,5 @@ public interface ClientWebService {
 
 	@DELETE
 	@Path("/clients/{id}/")
-	Response deleteClients(@PathParam("id") String id);
+	Response deleteClient(@PathParam("id") String id);
 }
