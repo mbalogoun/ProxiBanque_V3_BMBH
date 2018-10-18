@@ -9,8 +9,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ProxiBanqueV3BmbhApplicationTests {
 
+	
+	
 	@Test
 	public void contextLoads() {
+		
+		
+		
 	}
 
 }
