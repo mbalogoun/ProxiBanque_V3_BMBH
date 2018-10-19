@@ -1,7 +1,5 @@
 package org.formation.dao;
 
-import java.util.List;
-
 import org.formation.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,7 +13,7 @@ public interface CrudClientDao extends JpaRepository<Client, Integer> {
 
 	// customized methods here
 
-	List<Client> findAllClientByNom(String nom);
+//	List<Client> findAllClientByNom(String nom);
 
 //	List<Client> findAllClientByLogin(String login);
 

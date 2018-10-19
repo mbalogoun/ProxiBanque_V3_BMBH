@@ -12,8 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 @Entity
 public class Client {
@@ -25,11 +31,12 @@ public class Client {
 	private String prenom;
 	private String adresse;
 
-	@ManyToOne(cascade =CascadeType.ALL, fetch=FetchType.LAZY)
+	@JsonBackReference
+	@ManyToOne(cascade =CascadeType.ALL)
 	@JoinColumn(name = "conseiller_id")
-	Conseiller conseiller;
+	private Conseiller conseiller;
 
-	@OneToMany(mappedBy = "client", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	Set<CompteBancaire> compteBancaires = new HashSet<>();
 
 	public Client() {
@@ -97,26 +104,18 @@ public class Client {
 		return compteBancaires;
 	}
 
-//	public void setCompteBancaires(Set<CompteBancaire> compteBancaires) {
-//		this.compteBancaires = compteBancaires;
-//	}
-//	
-	
-
-//	@Override
-//	public String toString() {
-//		return "Client [id=" + id + ", numero=" + numero + ", nom=" + nom + ", adresse=" + adresse + ", conseiller="
-//				+ conseiller + "]";
-//	}
-
-	public String getPrenom() {
-		return prenom;
+	public void setCompteBancaires(Set<CompteBancaire> compteBancaires) {
+		this.compteBancaires = compteBancaires;
 	}
 
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", numero=" + numero + ", nom=" + nom + ", prenom=" + prenom + ", adresse="
-				+ adresse + "]";
+				+ adresse + ", conseiller=" + conseiller + "]";
+	}
+
+	public String getPrenom() {
+		return prenom;
 	}
 
 	public void setPrenom(String prenom) {

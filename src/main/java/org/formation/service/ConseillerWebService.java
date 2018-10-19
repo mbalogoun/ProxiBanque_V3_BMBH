@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
+import org.formation.model.Client;
 import org.formation.model.Conseiller;
 
 @Path("/conseillerservice")
@@ -34,5 +35,10 @@ public interface ConseillerWebService {
 	@DELETE
 	@Path("/conseillers/{id}/")
 	Response deleteConseiller(@PathParam("id") String id);
+	
+	@GET
+	@Path("/conseillers/{login}/{pwd}")
+	List<Client> getListeClientsConseiller(@PathParam("login") String login,
+			@PathParam("pwd") String pwd);
 
 }

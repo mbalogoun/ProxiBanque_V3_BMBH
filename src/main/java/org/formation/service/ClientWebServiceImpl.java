@@ -29,14 +29,14 @@ public class ClientWebServiceImpl implements ClientWebService {
 
 	@Override
 	public Response updateClient(Client client) {
-		crudClientDao.save(client);
-		return Response.ok().build();
+		Client cl = crudClientDao.save(client);
+		return Response.ok(cl).build();
 	}
 
 	@Override
 	public Response addClient(Client client) {
-		crudClientDao.save(client);
-		return Response.ok().build();
+		Client cl = crudClientDao.save(client);
+		return Response.ok(cl).build();
 	}
 
 	@Override

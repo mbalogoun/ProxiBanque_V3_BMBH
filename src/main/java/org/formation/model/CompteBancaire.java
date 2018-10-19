@@ -2,14 +2,19 @@ package org.formation.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 @Entity
 public class CompteBancaire {
@@ -19,7 +24,10 @@ public class CompteBancaire {
 	private String numero;
 	private String type;
 	private double solde;
-	@ManyToOne(cascade = CascadeType.ALL,  fetch=FetchType.LAZY)
+	
+	@XmlTransient
+	@JsonBackReference
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "client_id")
 	Client client;
 
