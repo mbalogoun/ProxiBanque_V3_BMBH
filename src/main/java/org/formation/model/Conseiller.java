@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+//import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Conseiller {
 	private String nom;
 	private String login;
 	private String password;
-	@OneToMany(mappedBy = "conseiller", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(mappedBy = "conseiller", cascade = CascadeType.ALL)
 	Set<Client> clients = new HashSet<>();
 
 	public Conseiller() {
@@ -90,4 +91,11 @@ public class Conseiller {
 		c.setConseiller(this);
 
 	}
+
+	@Override
+	public String toString() {
+		return "Conseiller [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", login=" + login + ", password="
+				+ password + "]";
+	}
+	
 }

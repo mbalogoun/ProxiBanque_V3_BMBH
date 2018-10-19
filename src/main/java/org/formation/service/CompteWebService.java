@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 import org.formation.model.CompteBancaire;
+import org.formation.model.MontantVirement;
 
 @Path("/compteservice")
 public interface CompteWebService {
@@ -33,4 +34,8 @@ public interface CompteWebService {
 	@DELETE
 	@Path("/comptes/{id}/")
 	Response deleteCompteBancaire(@PathParam("id") String id);
+	
+	@PUT
+	@Path("/comptes/{id1}/{id2}/")
+	Response faireVirement(@PathParam("id1") String id1, @PathParam("id2") String id2, MontantVirement montant);
 }

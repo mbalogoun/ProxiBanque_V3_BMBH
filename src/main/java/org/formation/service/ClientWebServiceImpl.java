@@ -8,7 +8,9 @@ import javax.ws.rs.core.Response;
 import org.formation.dao.CrudClientDao;
 import org.formation.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("clientWebService")
 public class ClientWebServiceImpl implements ClientWebService {
 
 	@Autowired
@@ -39,7 +41,7 @@ public class ClientWebServiceImpl implements ClientWebService {
 
 	@Override
 	public Response deleteClient(String id) {
-		crudClientDao.deleteById(Integer.valueOf(id));;
+		crudClientDao.deleteById(Integer.valueOf(id));
 		return Response.ok().build();
 	}
 

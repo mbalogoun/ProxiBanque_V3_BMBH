@@ -1,11 +1,11 @@
 package org.formation.model;
 
 import java.util.HashSet;
-
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +25,7 @@ public class Client {
 	private String prenom;
 	private String adresse;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@ManyToOne(cascade =CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name = "conseiller_id")
 	Conseiller conseiller;
 
@@ -97,18 +97,26 @@ public class Client {
 		return compteBancaires;
 	}
 
-	public void setCompteBancaires(Set<CompteBancaire> compteBancaires) {
-		this.compteBancaires = compteBancaires;
+//	public void setCompteBancaires(Set<CompteBancaire> compteBancaires) {
+//		this.compteBancaires = compteBancaires;
+//	}
+//	
+	
+
+//	@Override
+//	public String toString() {
+//		return "Client [id=" + id + ", numero=" + numero + ", nom=" + nom + ", adresse=" + adresse + ", conseiller="
+//				+ conseiller + "]";
+//	}
+
+	public String getPrenom() {
+		return prenom;
 	}
 
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", numero=" + numero + ", nom=" + nom + ", adresse=" + adresse + ", conseiller="
-				+ conseiller + "]";
-	}
-
-	public String getPrenom() {
-		return prenom;
+		return "Client [id=" + id + ", numero=" + numero + ", nom=" + nom + ", prenom=" + prenom + ", adresse="
+				+ adresse + "]";
 	}
 
 	public void setPrenom(String prenom) {

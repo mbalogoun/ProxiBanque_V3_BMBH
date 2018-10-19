@@ -1,6 +1,5 @@
 package org.formation.dao;
 
-import java.util.List;
 
 import org.formation.model.CompteBancaire;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,8 +13,5 @@ public interface CrudCompteDao extends JpaRepository<CompteBancaire, Integer> {
 
 	// customized methods here
 
-	List<CompteBancaire> findAllClientByNom(String nom);
-
-	List<CompteBancaire> findAllClientByLogin(String login);
-
+	
 }

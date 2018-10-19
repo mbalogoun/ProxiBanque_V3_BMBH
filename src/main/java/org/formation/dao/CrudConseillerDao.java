@@ -9,7 +9,7 @@ public interface CrudConseillerDao extends JpaRepository<Conseiller, Integer> {
 
 	// customized methods here
 
-	List<Conseiller> findAllClientByNom(String nom);
+	List<Conseiller> findAllConseillerByNom(String nom);
 
-	List<Conseiller> findAllClientByLogin(String login);
+//	List<Conseiller> findAllConseillerByLogin(String login);
 }

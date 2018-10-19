@@ -2,6 +2,7 @@ package org.formation.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,12 +18,12 @@ public class CompteBancaire {
 	private Integer id;
 	private String numero;
 	private String type;
-	private Double solde;
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	private double solde;
+	@ManyToOne(cascade = CascadeType.ALL,  fetch=FetchType.LAZY)
 	@JoinColumn(name = "client_id")
 	Client client;
 
-	public CompteBancaire(String numero, String type, Double solde, Client client) {
+	public CompteBancaire(String numero, String type, double solde, Client client) {
 		super();
 		this.numero = numero;
 		this.type = type;
@@ -30,7 +31,7 @@ public class CompteBancaire {
 		this.client = client;
 	}
 
-	public CompteBancaire(String numero, String type, Double solde) {
+	public CompteBancaire(String numero, String type, double solde) {
 		super();
 		this.numero = numero;
 		this.type = type;
@@ -65,11 +66,11 @@ public class CompteBancaire {
 		this.type = type;
 	}
 
-	public Double getSolde() {
+	public double getSolde() {
 		return solde;
 	}
 
-	public void setSolde(Double solde) {
+	public void setSolde(double solde) {
 		this.solde = solde;
 	}
 
